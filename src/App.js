@@ -18,15 +18,25 @@ function App() {
 
   return (
     <div className="App">
-      <input value={inputvalue} onChange={getInput}></input>
-      <button onClick={clickButton}>追加</button>
+      <div style={{ padding: "20px", width: "30%", margin: "0 auto" }}>
+        <input value={inputvalue} onChange={getInput}></input>
+        <button onClick={clickButton}>追加</button>
+      </div>
       <div>
         {todo.map((todoitem) => (
-          <>
+          <div
+            style={{
+              border: "thin solid black",
+              width: "30%",
+              margin: "0 auto",
+              marginBottom: "5px",
+              padding: "20px",
+            }}
+          >
             <div> {todoitem.id}</div>
 
             <div> {todoitem.value}</div>
-          </>
+          </div>
         ))}
       </div>
     </div>

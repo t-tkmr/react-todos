@@ -5,20 +5,20 @@ import { v4 as uuidv4 } from "uuid";
 
 function App() {
   const [todo, setTodo] = useState([]);
-  const [v, setV] = useState("");
+  const [inputvalue, setInputValue] = useState("");
   const clickButton = (e) => {
     setTodo((prevTodo) => {
-      return [...prevTodo, { id: uuidv4(), value: v }];
+      return [...prevTodo, { id: uuidv4(), value: inputvalue }];
     });
-    setV("");
+    setInputValue("");
   };
   const getInput = (e) => {
-    setV(e.target.value);
+    setInputValue(e.target.value);
   };
 
   return (
     <div className="App">
-      <input value={v} onChange={getInput}></input>
+      <input value={inputvalue} onChange={getInput}></input>
       <button onClick={clickButton}>追加</button>
       <div>
         {todo.map((todoitem) => (

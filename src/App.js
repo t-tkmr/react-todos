@@ -32,11 +32,12 @@ function App() {
               marginBottom: "5px",
               padding: "20px",
             }}
-            key={todo.id}
+            key={todoitem.id}
           >
             <div> {todoitem.id}</div>
 
             <div> {todoitem.value}</div>
+            <button onClick={clickButton}>削除</button>
           </div>
         ))}
       </div>

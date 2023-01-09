@@ -1,14 +1,16 @@
 import "./App.css";
 
 import { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 function App() {
   const [todo, setTodo] = useState([]);
   const [v, setV] = useState("");
   const clickButton = (e) => {
     setTodo((prevTodo) => {
-      return [...prevTodo, { id: 1, value: v }];
+      return [...prevTodo, { id: uuidv4(), value: v }];
     });
+    setV("");
   };
   const getInput = (e) => {
     setV(e.target.value);

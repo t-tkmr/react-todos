@@ -32,7 +32,7 @@ function App() {
               marginBottom: "5px",
               padding: "20px",
             }}
-            key={uuidv4()}
+            key={todo.id}
           >
             <div> {todoitem.id}</div>
 

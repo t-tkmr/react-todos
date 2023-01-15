@@ -6,9 +6,24 @@ import { v4 as uuidv4 } from "uuid";
 function App() {
   const [todo, setTodo] = useState([]);
   const [inputvalue, setInputValue] = useState("");
+  const [idnum, setIdnum] = useState(1);
+
+  const idCntUp = () => {
+    setIdnum(idnum + 1);
+    return idnum;
+  };
+
   const clickButton = (e) => {
     setTodo((prevTodo) => {
-      return [...prevTodo, { id: uuidv4(), value: inputvalue }];
+      return [
+        ...prevTodo,
+        {
+          id: idCntUp(),
+          value: inputvalue,
+          key: uuidv4(),
+        },
+      ];
+      // console.log(prevTodo);
     });
     setInputValue("");
   };
@@ -18,26 +33,29 @@ function App() {
 
   return (
     <div className="App">
-      <div style={{ padding: "20px", width: "30%", margin: "0 auto" }}>
-        <input value={inputvalue} onChange={getInput}></input>
-        <button onClick={clickButton}>追加</button>
+      <div className="inputarea">
+        <div>
+          <input
+            className="input"
+            value={inputvalue}
+            onChange={getInput}
+          ></input>
+        </div>
+        <div>
+          <button className="btn btn--orange btn--radius" onClick={clickButton}>
+            追加
+          </button>
+        </div>
       </div>
-      <div>
+      <div className="outarea">
         {todo.map((todoitem) => (
-          <div
-            style={{
-              border: "thin solid black",
-              width: "30%",
-              margin: "0 auto",
-              marginBottom: "5px",
-              padding: "20px",
-            }}
-            key={todoitem.id}
-          >
-            <div> {todoitem.id}</div>
+          <div key={todoitem.key}>
+            <div>
+              {todoitem.id}
+              {todoitem.value}
 
-            <div> {todoitem.value}</div>
-            <button onClick={clickButton}>削除</button>
+              <button>削除</button>
+            </div>
           </div>
         ))}
       </div>

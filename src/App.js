@@ -6,19 +6,30 @@ import { v4 as uuidv4 } from "uuid";
 function App() {
   const [todo, setTodo] = useState([]);
   const [inputvalue, setInputValue] = useState("");
-  const [idnum, setIdnum] = useState(1);
+  //const [idnum, setIdnum] = useState(1);
 
-  const idCntUp = () => {
+  /* const idCntUp = () => {
     setIdnum(idnum + 1);
     return idnum;
   };
-
+*/
   const clickButton = (e) => {
     setTodo((prevTodo) => {
+      const buf = [...prevTodo].pop();
+
+      let id_num = 1;
+      try {
+        console.log(buf.id);
+        id_num = buf.id + 1;
+      } catch (err) {
+        id_num = 1;
+        console.log(err);
+      }
+
       return [
         ...prevTodo,
         {
-          id: idCntUp(),
+          id: id_num, // [...prevTodo].length + 1, //idCntUp(),
           value: inputvalue,
           key: uuidv4(),
         },

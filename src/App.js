@@ -14,6 +14,7 @@ function App() {
   };
 */
   const clickButton = (e) => {
+    if (!inputvalue) return;
     setTodo((prevTodo) => {
       const buf = [...prevTodo].pop();
 

@@ -26,12 +26,12 @@
   float: right;
   border: none;
 }
-.btn--orange,
+
 .btn--orange {
   color: #fff;
   background-color: #eb6100;
 }
-.btn--orange:hover,
+
 .btn--orange:hover {
   color: #fff;
   background: #f56500;
@@ -43,5 +43,43 @@
 .outarea {
   width: 500px;
   margin: 0 auto;
-  background-color: burlywood;
+}
+.task {
+  border-bottom: 1px solid black;
+  height: 40px;
+  margin-bottom: 10px;
+  position: relative;
+}
+.taskid {
+  width: 50px;
+  float: left;
+  line-height: 40px;
+}
+.taskvalue {
+  width: 300px;
+  float: left;
+  text-align: left;
+  line-height: 40px;
+}
+.delbtn {
+  width: 60px;
+  float: right;
+  height: 30px;
+  margin-right: 10px;
+  box-sizing: border-box;
+  border: none;
+  position: absolute;
+  top: 0;
+  right: 10px;
+  bottom: 0;
+
+  margin: auto;
+}
+.delbtn--pink {
+  color: #fff;
+  background-color: gainsboro;
+}
+.delbtn--pink:hover {
+  color: #fff;
+  background-color: grey;
 }

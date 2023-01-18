@@ -60,13 +60,11 @@ function App() {
       </div>
       <div className="outarea">
         {todo.map((todoitem) => (
-          <div key={todoitem.key}>
-            <div>
-              {todoitem.id}
-              {todoitem.value}
+          <div className="task" key={todoitem.key}>
+            <div className="taskid">{todoitem.id}</div>
+            <div className="taskvalue">{todoitem.value}</div>
 
-              <button>削除</button>
-            </div>
+            <button className="delbtn delbtn--pink">削除</button>
           </div>
         ))}
       </div>

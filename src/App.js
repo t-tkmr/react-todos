@@ -14,17 +14,17 @@ function App() {
   };
 */
   const clickButton = (e) => {
+    e.stopPropagation();
     if (!inputvalue) return;
+
     setTodo((prevTodo) => {
       const buf = [...prevTodo].pop();
 
       let id_num = 1;
       try {
-        console.log(buf.id);
         id_num = buf.id + 1;
       } catch (err) {
         id_num = 1;
-        console.log(err);
       }
 
       return [
@@ -33,14 +33,22 @@ function App() {
           id: id_num, // [...prevTodo].length + 1, //idCntUp(),
           value: inputvalue,
           key: uuidv4(),
+          isDeleted: false,
         },
       ];
-      // console.log(prevTodo);
     });
     setInputValue("");
   };
   const getInput = (e) => {
+    e.stopPropagation();
     setInputValue(e.target.value);
+  };
+
+  const clickDelete = (key) => {
+    //const todos = [...todo];
+    //const targetTask = todos.find((task) => task.key === key);
+    // targetTask.isDeleted = !targetTask.isDeleted;
+    console.log(key);
   };
 
   return (
@@ -65,7 +73,12 @@ function App() {
             <div className="taskid">{todoitem.id}</div>
             <div className="taskvalue">{todoitem.value}</div>
 
-            <button className="delbtn delbtn--pink">削除</button>
+            <button
+              className="delbtn delbtn--pink"
+              onClick={clickDelete(todoitem.key)}
+            >
+              削除
+            </button>
           </div>
         ))}
       </div>

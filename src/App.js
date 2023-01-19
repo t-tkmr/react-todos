@@ -44,11 +44,13 @@ function App() {
     setInputValue(e.target.value);
   };
 
-  const clickDelete = (key) => {
-    //const todos = [...todo];
-    //const targetTask = todos.find((task) => task.key === key);
-    // targetTask.isDeleted = !targetTask.isDeleted;
-    console.log(key);
+  const clickDelete = (e) => {
+    const todos = [...todo];
+    //const keyvalue = e.target.__reactFiber$jcstazjsc7j.return.key;
+    //const targetTask = todos.find((task) => task.key === keyvalue);
+    //targetTask.isDeleted = !targetTask.isDeleted;
+    console.log(e);
+    console.log(todos);
   };
 
   return (
@@ -75,7 +77,8 @@ function App() {
 
             <button
               className="delbtn delbtn--pink"
-              onClick={clickDelete(todoitem.key)}
+              key={todoitem.key}
+              onClick={(e) => clickDelete(todoitem.key)}
             >
               削除
             </button>

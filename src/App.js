@@ -4,7 +4,7 @@ import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 function App() {
-  const [todo, setTodo] = useState([]);
+  const [todoList, ListList] = useState([]);
   const [inputvalue, setInputValue] = useState("");
   //const [idnum, setIdnum] = useState(1);
 
@@ -17,7 +17,7 @@ function App() {
     e.stopPropagation();
     if (!inputvalue) return;
 
-    setTodo((prevTodo) => {
+    setTodoList((prevTodo) => {
       const buf = [...prevTodo].pop();
 
       let id_num = 1;
@@ -46,10 +46,11 @@ function App() {
 
   const clickDelete = (e) => {
     const todos = [...todo];
-    //const keyvalue = e.target.__reactFiber$jcstazjsc7j.return.key;
-    //const targetTask = todos.find((task) => task.key === keyvalue);
+
+    const targetTask = todos.find((task) => task.key === e);
     //targetTask.isDeleted = !targetTask.isDeleted;
-    console.log(e);
+
+    //console.log(e);
     console.log(todos);
   };
 
@@ -60,7 +61,7 @@ function App() {
           <input
             className="input"
             value={inputvalue}
-            onChange={getInput}
+            onChange={(e) => getInput(e)}
           ></input>
         </div>
         <div>
@@ -77,8 +78,8 @@ function App() {
 
             <button
               className="delbtn delbtn--pink"
-              key={todoitem.key}
-              onClick={(e) => clickDelete(todoitem.key)}
+              onClick={() => clickDelete(todoitem.key)}
+              //onClick={function() {clickDelete(todoitem.key)}}
             >
               削除
             </button>

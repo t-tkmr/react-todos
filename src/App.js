@@ -4,7 +4,7 @@ import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 function App() {
-  const [todoList, ListList] = useState([]);
+  const [todoList, setTodoList] = useState([]);
   const [inputvalue, setInputValue] = useState("");
   //const [idnum, setIdnum] = useState(1);
 
@@ -45,11 +45,11 @@ function App() {
   };
 
   const clickDelete = (e) => {
-    const todos = [...todo];
+    const todos = [...todoList];
 
     const targetTask = todos.find((task) => task.key === e);
-    //targetTask.isDeleted = !targetTask.isDeleted;
-
+    targetTask.isDeleted = !targetTask.isDeleted;
+    //setTodoListを使って、isDeletedを更新できるように修正
     //console.log(e);
     console.log(todos);
   };
@@ -71,7 +71,7 @@ function App() {
         </div>
       </div>
       <div className="outarea">
-        {todo.map((todoitem) => (
+        {todoList.map((todoitem) => (
           <div className="task" key={todoitem.key}>
             <div className="taskid">{todoitem.id}</div>
             <div className="taskvalue">{todoitem.value}</div>

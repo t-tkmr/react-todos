@@ -44,13 +44,16 @@ function App() {
     setInputValue(e.target.value);
   };
 
-  const clickDelete = (e) => {
+  const clickDelete = (key) => {
     const todos = [...todoList];
 
-    const targetTask = todoList.find((task) => task.key === e);
+    const targetTask = todoList.find((task) => task.key === key);
     targetTask.isDeleted = true;
     //setTodoListを使って、isDeletedを更新できるように修正
     //console.log(e);
+    //リファクタ
+    //map関数を使って書く
+    //usestateのなかで処理を書く
 
     setTodoList(todos.filter((todo) => todo.isDeleted === false));
   };
